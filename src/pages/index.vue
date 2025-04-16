@@ -57,9 +57,9 @@
   const pokemonStore = usePokemonStore()
 </script>
 
-<style>
+<style scoped>
 /* Animation pour l'icône de favori */
-.mdi-heart {
+:deep(.mdi-heart) {
   animation: heartbeat 1s ease-in-out;
 }
 </style>
