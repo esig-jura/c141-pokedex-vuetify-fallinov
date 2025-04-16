@@ -1,31 +1,56 @@
 <template>
-  <!-- Conteneur principal pour structurer la disposition de la page -->
   <v-container>
-    <!--
-    Titre de la page
-      * mb-6 permet d'ajouter une Marge en Bas de 6 unités
-      * text-center permet de centrer le texte
-    -->
-    <h1 class="mb-6 text-center">
-      Pokédex
-    </h1>
+    <h1 class="mb-6 text-center">Pokédex</h1>
+
+    <v-text-field
+      clearable
+      label="Rechercher un Pokémon"
+      prepend-icon="mdi-magnify"
+    />
 
     <v-row>
+      <!-- Exemple de colonne vide (à dupliquer plus tard avec du contenu) -->
       <v-col
         v-for="i in 20"
         cols="12"
         lg="3"
         md="4"
-        mx="12"
         sm="6"
-        xxl="2"
+        xl="2"
       >
-        Mon pokémon - {{ i }}
+        <v-card>
+          <v-img
+            cover
+            height="200px"
+            src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+          />
+
+          <v-card-title>
+            Pokémont {{ i }}
+          </v-card-title>
+
+          <v-card-subtitle>
+            Niveau: {{ i }}
+          </v-card-subtitle>
+
+          <v-card-actions>
+            <v-btn
+              color="red"
+              icon="mdi-heart-outline"
+            />
+          </v-card-actions>
+
+          <v-expand-transition>
+            <div v-show="show">
+              <v-divider />
+
+              <v-card-text>
+                I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
+              </v-card-text>
+            </div>
+          </v-expand-transition>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
 </template>
-
-<script setup>
-// Vos scripts ou imports ici
-</script>
