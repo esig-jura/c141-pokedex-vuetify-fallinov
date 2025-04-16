@@ -23,7 +23,7 @@
           <v-img
             alt="Magicarpe"
             height="200px"
-            src="/images/magicarpe.png"
+            :src="`/images/${pokemon.img}`"
           />
 
           <v-card-title>
