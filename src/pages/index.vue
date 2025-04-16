@@ -12,6 +12,7 @@
       <!-- Exemple de colonne vide (à dupliquer plus tard avec du contenu) -->
       <v-col
         v-for="i in 20"
+        :key="i"
         cols="12"
         lg="3"
         md="4"
@@ -20,9 +21,9 @@
       >
         <v-card>
           <v-img
-            cover
+            alt="Magicarpe"
             height="200px"
-            src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
+            src="/images/magicarpe.png"
           />
 
           <v-card-title>
@@ -39,16 +40,6 @@
               icon="mdi-heart-outline"
             />
           </v-card-actions>
-
-          <v-expand-transition>
-            <div v-show="show">
-              <v-divider />
-
-              <v-card-text>
-                I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-              </v-card-text>
-            </div>
-          </v-expand-transition>
         </v-card>
       </v-col>
     </v-row>
