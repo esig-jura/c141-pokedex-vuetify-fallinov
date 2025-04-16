@@ -18,6 +18,7 @@
         md="4"
         sm="6"
         xl="2"
+        xs="12"
       >
         <v-card>
           <v-img
