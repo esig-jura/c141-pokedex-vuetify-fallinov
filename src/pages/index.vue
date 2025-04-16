@@ -11,8 +11,8 @@
     <v-row>
       <!-- Exemple de colonne vide (à dupliquer plus tard avec du contenu) -->
       <v-col
-        v-for="i in 20"
-        :key="i"
+        v-for="pokemon in pokemonStore.pokemons"
+        :key="pokemon.id"
         cols="12"
         lg="3"
         md="4"
@@ -27,11 +27,11 @@
           />
 
           <v-card-title>
-            Pokémont {{ i }}
+            {{ pokemon.name }}
           </v-card-title>
 
           <v-card-subtitle>
-            Niveau: {{ i }}
+            Niveau: {{ pokemon.level }}
           </v-card-subtitle>
 
           <v-card-actions>
@@ -45,3 +45,12 @@
     </v-row>
   </v-container>
 </template>
+
+<script setup>
+  // Importer le magasin des pokémons
+  // @/ => représente le dossier src
+  import { usePokemonStore } from '@/stores/pokemonStore'
+
+  // Récupère le magasin des Pokémon
+  const pokemonStore = usePokemonStore()
+</script>
