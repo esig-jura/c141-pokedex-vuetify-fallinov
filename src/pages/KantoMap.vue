@@ -1,14 +1,9 @@
-<script setup>
-  import { ref } from 'vue'
-
-  const dialog = ref(false)
-</script>
-
 <template>
   <v-container max-width="600px">
-    <h1>Le Monde Pokémon</h1>
+    <h1 class="mb-6 text-center">Le Monde Pokémon</h1>
 
     <v-img
+      alt="Carte du monde Pokémon"
       class="cursor-pointer"
       src="/images/pokemon-map.png"
       @click="dialog = true"
@@ -31,22 +26,24 @@
     </v-card>
 
     <!-- Dialog pour afficher l'image -->
-    <v-dialog
-      v-model="dialog"
-    >
+    <v-dialog v-model="dialog">
       <v-card>
-        <v-img src="/images/pokemon-map.png" />
+        <v-img
+          alt="Carte du monde Pokémon"
+          src="/images/pokemon-map.png"
+        />
         <template #actions>
-          <v-btn
-            class="ms-auto"
-            text="Ok"
-            @click="dialog = false"
-          />
+          <v-btn @click="dialog = false">Fermer</v-btn>
         </template>
       </v-card>
     </v-dialog>
   </v-container>
 </template>
+
+<script setup>
+  import { ref } from 'vue'
+  const dialog = ref(false)
+</script>
 
 <style scoped>
 h2 {
