@@ -3,15 +3,20 @@
     <h1 class="mb-6 text-center">Pokédex</h1>
 
     <v-text-field
+      v-model="search"
       clearable
       label="Rechercher un Pokémon"
       prepend-icon="mdi-magnify"
     />
 
-    <v-row>
+    <v-alert v-if="filteredPokemons.length === 0" class="text-center mt-4" type="warning">
+      Aucun Pokémon ne correspond à votre recherche.
+    </v-alert>
+
+    <v-row v-else>
       <!-- Exemple de colonne vide (à dupliquer plus tard avec du contenu) -->
       <v-col
-        v-for="pokemon in pokemonStore.pokemons"
+        v-for="pokemon in filteredPokemons"
         :key="pokemon.id"
         cols="12"
         lg="3"
@@ -20,31 +25,8 @@
         xl="2"
         xs="12"
       >
-        <v-card>
-          <v-img
-            alt="Magicarpe"
-            height="200px"
-            :src="`/images/${pokemon.img}`"
-          />
-
-          <v-card-title>
-            {{ pokemon.name }}
-          </v-card-title>
-
-          <v-card-subtitle>
-            Niveau: {{ pokemon.level }}
-          </v-card-subtitle>
-
-          <v-card-actions>
-            <v-btn
-              color="red"
-              :icon="pokemonStore.isFavorite(pokemon) ? 'mdi-heart' : 'mdi-heart-outline'"
-              @click="pokemonStore.toggleFavorite(pokemon)"
-            />
-          </v-card-actions>
-        </v-card>
-      </v-col>
-    </v-row>
+        <pokemon-card :pokemon="pokemon" />
+      </v-col></v-row>
   </v-container>
 </template>
 
@@ -52,9 +34,21 @@
   // Importer le magasin des pokémons
   // @/ => représente le dossier src
   import { usePokemonStore } from '@/stores/pokemonStore'
+  import PokemonCard from '@/components/PokemonCard.vue'
 
   // Récupère le magasin des Pokémon
   const pokemonStore = usePokemonStore()
+
+  // Texte du champ de recherche
+  const search = ref('')
+
+  // Propriété calculée pour filtrer les Pokémon en fonction de la recherche
+  const filteredPokemons = computed(() => {
+    const query = search.value.toLowerCase().trim()
+    return pokemonStore.pokemons.filter(pokemon =>
+      pokemon.name.toLowerCase().includes(query)
+    )
+  })
 </script>
 
 <style scoped>

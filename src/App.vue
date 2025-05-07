@@ -36,4 +36,14 @@
 <script setup>
   // Importation du composant MenuPrincipal pour l'en-tête de l'application
   import MenuPrincipal from '@/components/AppHeader.vue'
+  import { usePokemonStore } from '@/stores/pokemonStore'
+
+  // Récupération du magasin Pinia pour gérer les données des Pokémon
+  const pokemonStore = usePokemonStore()
+
+  // Lorsque le composant est monté, on charge les favoris
+  onMounted(() => {
+    pokemonStore.loadFavorites() // charge les favoris depuis le localStorage
+  })
+
 </script>

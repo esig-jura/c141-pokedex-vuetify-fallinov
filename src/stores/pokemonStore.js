@@ -296,7 +296,6 @@ export const usePokemonStore = defineStore('pokemon', {
       if (!pokemon.name || !pokemon.level) {
         return { success: false, message: 'Le nom et le niveau du Pokémon sont obligatoires' }
       }
-
       // Génération d’un identifiant unique
       pokemon.id = uuidv4()
 
