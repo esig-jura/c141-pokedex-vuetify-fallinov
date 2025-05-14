@@ -41,23 +41,8 @@
   // Récupération du magasin Pinia pour gérer les données des Pokémon
   const pokemonStore = usePokemonStore()
 
-  async function chargerPokemons () {
-    try {
-      // On envoie une requête GET à l’API locale
-      const response = await fetch('http://localhost:3535/pokemons')
-      // On convertit la réponse en objet JavaScript
-      const data = await response.json()
-      // On affiche le résultat dans la console
-      console.log('Pokémns chargés : ', data)
-    } catch (error) {
-      // En cas d’erreur, on affiche le message d’erreur
-      console.error('Erreur lors de la récupération des Pokémon:', error)
-    }
-  }
-
   // Lorsque le composant est monté, on charge les favoris
   onMounted(() => {
-    chargerPokemons()
     console.log('Chargement des favoris')
     pokemonStore.loadFavorites() // charge les favoris depuis le localStorage
   })
