@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card :to="`/pokemons/${pokemon.id}`">
     <v-img
       alt="Magicarpe"
       height="200px"
@@ -18,7 +18,7 @@
       <v-btn
         color="red"
         :icon="pokemonStore.isFavorite(pokemon) ? 'mdi-heart' : 'mdi-heart-outline'"
-        @click="pokemonStore.toggleFavorite(pokemon)"
+        @click.prevent="pokemonStore.toggleFavorite(pokemon)"
       />
     </v-card-actions>
   </v-card>
@@ -26,6 +26,7 @@
 
 <script setup>
   import { usePokemonStore } from '@/stores/pokemonStore'
+  import PokemonTypesChips from '@/components/PokemonTypesChips.vue'
 
   defineProps({
     pokemon: {
