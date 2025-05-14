@@ -42,10 +42,18 @@
   // Texte du champ de recherche
   const search = ref('')
 
+  // Propriété calculée pour trier les Pokémon par nom
+  const sortedPokemons = computed(() => {
+    return [...pokemonStore.pokemons].sort((a, b) =>
+      a.name.localeCompare(b.name)
+      // b.level - a.level
+    )
+  })
+
   // Propriété calculée pour filtrer les Pokémon en fonction de la recherche
   const filteredPokemons = computed(() => {
     const query = search.value.toLowerCase().trim()
-    return pokemonStore.pokemons.filter(pokemon =>
+    return sortedPokemons.value.filter(pokemon =>
       pokemon.name.toLowerCase().includes(query)
     )
   })
