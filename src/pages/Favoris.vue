@@ -33,7 +33,3 @@
 
   const pokemonStore = usePokemonStore()
 </script>
-
-<style scoped>
-
-</style>
